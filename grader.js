@@ -30,6 +30,7 @@ var CHECKSFILE_DEFAULT = "checks.json";
 
 var assertFileExists = function(infile) {
     var instr = infile.toString();
+    if (instr.rest.get(apiurl).on('complete', response2console);
     if(!fs.existsSync(instr)) {
         console.log("%s does not exist. Exiting.", instr);
         process.exit(1); // http://nodejs.org/api/process.html#process_process_exit_code
@@ -62,6 +63,18 @@ var clone = function(fn) {
     return fn.bind({});
 };
 
+var buildfl = function(csvfile, headers) {
+    var response2console = function(result, response) {
+        if (result instanceof Error) {
+            console.error('Error: ' + util.format(response.message));
+        } else {
+            console.error("Wrote %s", csvfile);
+            fs.writeFileSync(csvfile, result);
+           // csv2console(csvfile, headers);
+        }
+    };
+    return response2console;
+};
 
 if(require.main == module) {
     program
